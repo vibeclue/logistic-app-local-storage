@@ -1,0 +1,48 @@
+.filter-container {
+    margin: 30px 100px;
+}
+
+#search {
+    font-size: 13;
+}
+
+.filter-row {
+    display: flex;
+}
+
+.filter-input {
+    position: relative;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.filter-input input {
+  width: 140px;
+  height: 30px;
+  font-size: 16px;
+  border: 1px solid rgba(13, 10, 24, 0.6);;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.filter-input::after {
+    content: "";
+    position: absolute;
+    right: 28px; /* 8px от иконки + 6px + половина ширины линии ~14px? можно подкорректировать */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;  /* толщина линии */
+    height: 18px; /* высота */
+    background-color: #ccc;
+}
+
+.filter-input img {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}

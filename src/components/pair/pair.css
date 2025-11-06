@@ -1,0 +1,109 @@
+/* === ТЕЛО === */
+.pair-table tbody td {
+  padding: 14px 20px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  color: #0D0A18;
+
+table-layout: fixed;
+  width: 100%;
+}
+
+
+/* Зебра */
+.pair-table tbody tr.even-row {
+  background-color: #F5F5F5;
+}
+.pair-table tbody tr.odd-row {
+  background-color: #ffffff;
+}
+
+/* ПЕРВАЯ СТРОКА – только нижние закругления */
+.pair-table tbody tr:first-child td:first-child {
+  border-bottom-left-radius: 10px;   /* только нижний левый */
+}
+.pair-table tbody tr:first-child td:last-child {
+  border-bottom-right-radius: 10px;  /* только нижний правый */
+}
+
+/* ВСЕ ОСТАЛЬНЫЕ СТРОКИ – все четыре угла */
+.pair-table tbody tr:not(:first-child) td:first-child {
+  border-radius: 10px 0 0 10px;      /* верх-левый + ниж-левый */
+}
+.pair-table tbody tr:not(:first-child) td:last-child {
+  border-radius: 0 10px 10px 0;      /* верх-правый + ниж-правый */
+}
+
+/* === ЯЧЕЙКИ === */
+.comment-cell {
+  /* text-align: left; */
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 0; /* важно для ellipsis в table-layout: fixed */
+}
+
+.options-cell img{
+    margin-right: 10px;
+}
+
+/* === ИКОНКИ === */
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  /* filter: grayscale(0%) opacity(0.8); */
+}
+
+.icon:hover {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.15);
+}
+
+.options-cell .flag-on {
+  display: inline-block; /* чтобы родительская строка "увидела" флаг */
+}
+
+/* Окрашиваем всю строку, если в ней есть .flag-on */
+tr:has(.options-cell .flag-on) {
+  background-color: #FFF2E7 !important;
+}
+
+/* === ШИРИНА КОЛОНОК === */
+.pair-table th:nth-child(1),
+.pair-table td:nth-child(1),
+.pair-table th:nth-child(2),
+.pair-table td:nth-child(2) {
+  width: 8%;
+}
+
+.pair-table th:nth-child(3),
+.pair-table td:nth-child(3),
+.pair-table th:nth-child(4),
+.pair-table td:nth-child(4),
+.pair-table th:nth-child(5),
+.pair-table td:nth-child(5),
+.pair-table th:nth-child(6),
+.pair-table td:nth-child(6) {
+  width: 10%;
+}
+
+.pair-table th:nth-child(7),
+.pair-table td:nth-child(7) {
+  width: 30%;
+}
+
+.pair-table th:nth-child(8),
+.pair-table td:nth-child(8) {
+  width: 10%;
+}
+
+/* === Закругление НИЖНИХ углов === */
+.pair-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.pair-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}

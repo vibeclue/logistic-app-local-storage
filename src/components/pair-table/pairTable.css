@@ -1,0 +1,99 @@
+/* === КОНТЕЙНЕР === */
+.table-container {
+  width: 100%;
+  padding: 0 80px;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+/* === ТАБЛИЦА === */
+.pair-table {
+  width: 100%;
+  border-collapse: collapse; /* КЛЮЧ: теперь можно закруглять отдельные ячейки */
+  table-layout: fixed;
+}
+
+/* === ШАПКА === */
+.pair-table thead th {
+  background-color: #495276;
+  color: white;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Закругление верхних углов */
+.pair-table thead th:first-child {
+  border-top-left-radius: 10px;
+}
+.pair-table thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+/* Зебра */
+.pair-table tbody tr.even-row {
+  background-color: #F5F5F5;
+}
+.pair-table tbody tr.odd-row {
+  background-color: #ffffff;
+}
+
+/* ПЕРВАЯ СТРОКА – только нижние закругления */
+.pair-table tbody tr:first-child td:first-child {
+  border-bottom-left-radius: 10px;   /* только нижний левый */
+}
+.pair-table tbody tr:first-child td:last-child {
+  border-bottom-right-radius: 10px;  /* только нижний правый */
+}
+
+/* ВСЕ ОСТАЛЬНЫЕ СТРОКИ – все четыре угла */
+.pair-table tbody tr:not(:first-child) td:first-child {
+  border-radius: 10px 0 0 10px;      /* верх-левый + ниж-левый */
+}
+.pair-table tbody tr:not(:first-child) td:last-child {
+  border-radius: 0 10px 10px 0;      /* верх-правый + ниж-правый */
+}
+
+
+/* === ШИРИНА КОЛОНОК === */
+.pair-table th:nth-child(1),
+.pair-table td:nth-child(1),
+.pair-table th:nth-child(2),
+.pair-table td:nth-child(2) {
+  width: 8%;
+}
+
+.pair-table th:nth-child(3),
+.pair-table td:nth-child(3),
+.pair-table th:nth-child(4),
+.pair-table td:nth-child(4),
+.pair-table th:nth-child(5),
+.pair-table td:nth-child(5),
+.pair-table th:nth-child(6),
+.pair-table td:nth-child(6) {
+  width: 10%;
+}
+
+.pair-table th:nth-child(7),
+.pair-table td:nth-child(7) {
+  width: 30%;
+}
+
+.pair-table th:nth-child(8),
+.pair-table td:nth-child(8) {
+  width: 10%;
+}
+
+/* === Закругление НИЖНИХ углов === */
+.pair-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.pair-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}

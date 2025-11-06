@@ -1,0 +1,25 @@
+.container-add-pair {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 80px 0 80px;
+}
+
+span.curr-pair-text {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+button.add-pair-button{
+    width: 200px;
+    height: 44px;
+    background-color: #FCB040;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+button.add-pair-button:hover {
+  background-color: #faa11c;
+}

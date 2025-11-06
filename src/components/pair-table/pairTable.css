@@ -102,3 +102,13 @@
 .pair-table tbody tr:last-child td:last-child {
   border-bottom-right-radius: 10px;
 }
+
+.empty-table {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #888;
+  padding: 40px 0;
+  background-color: #fafafa;
+  border-radius: 0 0 10px 10px;
+}

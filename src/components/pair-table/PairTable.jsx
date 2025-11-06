@@ -67,7 +67,8 @@ function PairTable() {
           </tr>
         </thead>
         <tbody>
-            {pairs.map((pair, index) => 
+          {pairs.length > 0 ? (
+            pairs.map((pair, index) => (
                 <Pair 
                   deletePair={(id) => deleteHandler(id)} // получаю id из Pair.jsx и передаю в свою ф-цию
                   toggleFlag={(id) => toggleFlagHandler(id)}
@@ -75,6 +76,13 @@ function PairTable() {
                   index={index}
                   key={pair.id}
                 />
+            ))
+          ) : (  
+              <tr>
+                <td colSpan="8" className="empty-table">
+                   Нет активных пар 😴
+                </td>
+              </tr>
             )}
         </tbody>
       </table>

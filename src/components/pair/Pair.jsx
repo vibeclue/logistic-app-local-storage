@@ -5,20 +5,31 @@ import flagOn from '../../img/tabler_flag_on.png'
 import './pair.css' 
 
 
-function Pair({truck, trailer, date, from, to, cargo, comment, flag}){
+function Pair({ pair, index, deletePair, toggleFlag }){
     return(
-        <tr className={2 % 2 === 0 ? "even-row" : "odd-row"}>
-            <td>{truck}</td>
-            <td>{trailer}</td>
-            <td>{date}</td>
-            <td>{from}</td>
-            <td>{to}</td>
-            <td>{cargo}</td>
-            <td className="comment-cell">{comment}</td>
+        <tr className={index % 2 === 0 ? "even-row" : "odd-row"}>
+            <td>{pair.truck}</td>
+            <td>{pair.trailer}</td>
+            <td>{pair.date}</td>
+            <td>{pair.from}</td>
+            <td>{pair.to}</td>
+            <td>{pair.cargo}</td>
+            <td className="comment-cell">{pair.comment}</td>
             <td className="options-cell">
-                <img src={editImg} alt="Редактировать" className="icon" />
-                <img src={deleteImg} alt="Удалить" className="icon" />
-                <img src={flag ? flagOn: flagOff} alt="Обычное" className={`icon ${flag ? 'flag-on' : ''}`} />
+                <img src={editImg} 
+                     alt="Редактировать" 
+                     className="icon" 
+                />
+                <img src={deleteImg} 
+                     onClick={() => deletePair(pair.id)}
+                     alt="Удалить" 
+                     className="icon" 
+                />
+                <img src={pair.flag ? flagOn: flagOff} 
+                     onClick={() => toggleFlag(pair.id)}
+                     alt="Обычное" 
+                     className={`icon ${pair.flag ? 'flag-on' : ''}`} 
+                />
             </td>
         </tr>
     );

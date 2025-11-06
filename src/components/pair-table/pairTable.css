@@ -66,18 +66,23 @@
 .pair-table td:nth-child(1),
 .pair-table th:nth-child(2),
 .pair-table td:nth-child(2) {
-  width: 8%;
+  width: 10%;
 }
 
 .pair-table th:nth-child(3),
-.pair-table td:nth-child(3),
+.pair-table td:nth-child(3){
+  width: 10%;
+}
+
 .pair-table th:nth-child(4),
 .pair-table td:nth-child(4),
 .pair-table th:nth-child(5),
-.pair-table td:nth-child(5),
+.pair-table td:nth-child(5){
+  width: 10%;
+}
 .pair-table th:nth-child(6),
 .pair-table td:nth-child(6) {
-  width: 10%;
+  width: 12%;
 }
 
 .pair-table th:nth-child(7),

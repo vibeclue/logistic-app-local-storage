@@ -1,3 +1,4 @@
+import { usePairs } from '../../PairsContext.jsx';
 import editImg from '../../img/edit.png'
 import deleteImg from '../../img/delete.png'
 import flagOff from '../../img/tabler_flag.png'
@@ -5,7 +6,10 @@ import flagOn from '../../img/tabler_flag_on.png'
 import './pair.css' 
 
 
-function Pair({ pair, index, deletePair, toggleFlag }){
+function Pair({ pair, index }){
+
+    const { dispatchPairs } = usePairs();
+
     return(
         <tr className={index % 2 === 0 ? "even-row" : "odd-row"}>
             <td>{pair.truck}</td>
@@ -21,12 +25,20 @@ function Pair({ pair, index, deletePair, toggleFlag }){
                      className="icon" 
                 />
                 <img src={deleteImg} 
-                     onClick={() => deletePair(pair.id)}
-                     alt="Удалить" 
-                     className="icon" 
+                    onClick={() => {
+                        if (confirm('Точно хочешь удалить пару?')) {
+                            dispatchPairs({ type: 'deleted', 
+                                    id: pair.id });
+                        }
+                    }}
+                    alt="Удалить"
+                    className="icon"
                 />
                 <img src={pair.flag ? flagOn: flagOff} 
-                     onClick={() => toggleFlag(pair.id)}
+                     onClick={() => dispatchPairs({
+                        type: 'toggledFlag',
+                        id: pair.id
+                    })}
                      alt="Обычное" 
                      className={`icon ${pair.flag ? 'flag-on' : ''}`} 
                 />

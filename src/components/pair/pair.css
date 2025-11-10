@@ -13,9 +13,11 @@ table-layout: fixed;
 
 /* Зебра */
 .pair-table tbody tr.even-row {
+  transition: background-color 0.3s ease;
   background-color: #F5F5F5;
 }
 .pair-table tbody tr.odd-row {
+  transition: background-color 0.3s ease;
   background-color: #ffffff;
 }
 

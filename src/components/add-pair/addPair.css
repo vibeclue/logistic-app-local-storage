@@ -18,6 +18,7 @@ button.add-pair-button{
     border-radius: 5px;
     font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 button.add-pair-button:hover {

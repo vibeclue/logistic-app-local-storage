@@ -1,29 +1,11 @@
-import { useContext } from 'react';
-import { PairsContext } from '../../PairsContext';
+import { usePairs } from '../../PairsContext.jsx';
 import Pair from '../pair/Pair'
 import './pairTable.css'
 
 
 function PairTable() {
 
-  const { pairs, dispatch } = useContext(PairsContext);
-
-  function deleteHandler(id){
-    if(confirm('Точно хочешь удалить пару?')) {
-      dispatch({
-        type: 'deleted',
-        id: id
-      });
-    }  
-  }
-
-  function toggleFlagHandler(id) {
-      dispatch({
-        type: 'toggledFlag',
-        id: id
-      });
-    // setPairs(prev => prev.map(p => p.id === id ? {...p, flag: !p.flag } : p))
-  }
+  const { pairs } = usePairs();
 
   return (
     <div className="table-container">
@@ -44,8 +26,6 @@ function PairTable() {
           {pairs.length > 0 ? (
             pairs.map((pair, index) => (
                 <Pair 
-                  deletePair={(id) => deleteHandler(id)} // получаю id из Pair.jsx и передаю в свою ф-цию
-                  toggleFlag={(id) => toggleFlagHandler(id)}
                   pair={pair}
                   index={index}
                   key={pair.id}

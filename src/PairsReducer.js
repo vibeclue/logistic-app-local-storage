@@ -1,4 +1,4 @@
-export default function pairsReducer(pairs, action) {
+export function pairsReducer(pairs, action) {
     switch (action.type) {
         case 'deleted': {
             return pairs.filter(pair => pair.id !== action.id) // отфильтровал все пары кроме той, что с переданным id
@@ -17,4 +17,12 @@ export default function pairsReducer(pairs, action) {
             return pairs;
         }        
     }
+}
+
+export function trucksReducer() {
+
+}
+
+export function trailersReducer() {
+
 }

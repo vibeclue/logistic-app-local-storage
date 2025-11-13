@@ -36,8 +36,8 @@ function ModalWindowMain({modal}) {
             return;
         }
 
-        const todayDate = new Date().toISOString().split('T')[0];
-        const dateToUse = formData.date ? formData.date : todayDate;
+
+        const dateToUse = convertDate(formData.date);
 
         dispatchPairs({
         type: 'added',
@@ -112,7 +112,7 @@ function ModalWindowMain({modal}) {
                             <input type="date" 
                                     id="date" 
                                     name="date"
-                                    value={formData.date}
+                                    value={formData.date ? convertDate(formData.date).iso : convertDate().iso} 
                                     onChange={handleChange} 
                             />
                         </div>
@@ -170,6 +170,19 @@ function ModalWindowMain({modal}) {
             </div>
         </div>
     );
+}
+
+function convertDate(date) {
+    let d = date ? new Date(date) : new Date();
+
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const yyyy = d.getFullYear();
+
+    return {
+        display: `${dd}.${mm}.${yyyy}`,     // для показа в таблице, span и т.п.
+        iso: `${yyyy}-${mm}-${dd}`          // для <input type="date">
+    };
 }
 
 export default ModalWindowMain;

@@ -66,7 +66,7 @@ export function PairsProvider({ children }) {
         pairs, 
         dispatchPairs,  
         modalMainIsOpen,
-        setModalMainIsOpen
+        setModalMainIsOpen,
         }
     }>
         <TrucksContext.Provider value={{ trucks, dispatchTrucks }}>

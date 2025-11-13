@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTrucks, useTrailers } from '../../../PairsContext';
-import './ModalWindowHead.css';
+import './modalWindowHead.css';
 
 function ModalWindowHead({ isOpen, onClose, type }) {
   const [isAdding, setIsAdding] = useState(false);

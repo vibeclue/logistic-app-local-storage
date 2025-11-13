@@ -1,0 +1,186 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #F5F5F5;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 320px;
+  max-height: 85vh;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+/* === ЗАГОЛОВОК === */
+.modal-header {
+  background: #495276;
+  color: white;
+  display: flex;
+  justify-content: flex-start; /* оставляем */
+  align-items: center;
+  padding: 14px 20px;
+}
+
+/* Левая часть: Текст + Кнопки + Инпут */
+.header-left {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start; /* прижимает к левому краю */
+  /* text-align: center; */
+  flex: 1;
+  min-width: 0; 
+}
+
+/* Текст */
+.header-left h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Кнопки: + / крестик / галочка */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.circle-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.circle-btn.add {
+  background: #F5F5F5;
+  color: #495276;
+  font-size: 30px;
+}
+
+.circle-btn.add:hover {
+  background: #e0e0e0;
+  transform: scale(1.15);
+}
+
+.circle-btn.cancel {
+  background: #ef4444;
+  color: white;
+  font-size: 30px;
+}
+
+.circle-btn.cancel:hover {
+  background: #dc2626;
+  transform: scale(1.15);
+}
+
+.circle-btn.confirm {
+  background: #FCB040;
+  color: white;
+  animation: popIn 0.35s ease-out;
+  font-size: 25px;
+}
+
+.circle-btn.confirm:hover {
+  background: #fda41e;
+  transform: scale(1.15);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  80% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* === ИНПУТ === */
+/* === ИНПУТ — СТАЛ ШИРОКИМ И КРАСИВЫМ === */
+.input-wrapper {
+  flex: 1; /* заставляет инпут занять всё оставшееся место */
+  min-width: 0;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #344b68;
+  border-radius: 10px;
+  font-size: 13px;
+  background: white;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #132a50;
+  box-shadow: 0 0 0 4px rgba(29, 67, 128, 0.25);
+  transform: scale(1.02);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-15px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* === КНОПКА ЗАКРЫТИЯ МОДАЛКИ === */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 0; /* убираем прежний отступ */
+}
+
+/* === СПИСОК === */
+.modal-list {
+  padding: 14px;
+  max-height: 55vh;
+  overflow-y: auto;
+}
+
+.modal-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-list li {
+  padding: 14px 0;
+  font-size: 16px;
+  color: #1e293b;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-list li:last-child {
+  border-bottom: none;
+}
+
+.empty {
+  color: #94a3b8;
+  text-align: center;
+  font-style: italic;
+  margin: 40px 0;
+}

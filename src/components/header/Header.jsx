@@ -1,7 +1,7 @@
 import './header.css'
 import logo from "../../img/logo.png"
 
-function Header() {
+function Header({ openModal }) {
     return (
         <header className='header'>
             <div className="header-left">
@@ -13,8 +13,10 @@ function Header() {
             </div>
 
             <div className="header-right">
-                <button className="btn-add truck">Добавить тягач</button>
-                <button className="btn-add trailer">Добавить прицеп</button>
+                <button className="btn-add truck"
+                        onClick={() => openModal('truck')}>Добавить тягач</button>
+                <button className="btn-add trailer"
+                        onClick={() => openModal('trailer')}>Добавить прицеп</button>
             </div>
         </header>
     );

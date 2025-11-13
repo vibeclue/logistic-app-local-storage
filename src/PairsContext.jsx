@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { pairsReducer, trucksReducer, trailersReducer } from './PairsReducer';
 
 
@@ -58,8 +58,17 @@ export function PairsProvider({ children }) {
   const [trucks, dispatchTrucks] = useReducer(trucksReducer, initialTrucks);
   const [trailers, dispatchTrailers] = useReducer(trailersReducer, initialTrailers);
 
+  const [modalMainIsOpen, setModalMainIsOpen] = useState(false);
+
   return (
-    <PairsContext.Provider value={ {pairs, dispatchPairs }}>
+    <PairsContext.Provider value={ 
+      {
+        pairs, 
+        dispatchPairs,  
+        modalMainIsOpen,
+        setModalMainIsOpen
+        }
+    }>
         <TrucksContext.Provider value={{ trucks, dispatchTrucks }}>
             <TrailersContext.Provider value={{ trailers, dispatchTrailers }}>
                 { children }
@@ -71,4 +80,4 @@ export function PairsProvider({ children }) {
 
 export const usePairs = () => useContext(PairsContext);
 export const useTrucks = () => useContext(TrucksContext);
-export const  useTrailers = () => useContext(TrailersContext);
+export const useTrailers = () => useContext(TrailersContext);

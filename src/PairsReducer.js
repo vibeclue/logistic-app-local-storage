@@ -19,10 +19,24 @@ export function pairsReducer(pairs, action) {
     }
 }
 
-export function trucksReducer() {
+export const trucksReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD':
+      return [...state, action.payload];
+    case 'DELETE':
+      return state.filter(t => t.id !== action.payload);
+    default:
+      return state;
+  }
+};
 
-}
-
-export function trailersReducer() {
-
-}
+export const trailersReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD':
+      return [...state, action.payload];
+    case 'DELETE':
+      return state.filter(t => t.id !== action.payload);
+    default:
+      return state;
+  }
+};

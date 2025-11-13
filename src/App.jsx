@@ -5,7 +5,7 @@ import PairTable from './components/pair-table/PairTable';
 import { PairsProvider } from './PairsContext';
 import { useState } from 'react';
 import './App.css';
-import ModalWindowMain from './components/modals/modal-window-main/ModalWindowMain'
+import ModalWindowMain from './components/modals/modal-window-main/ModalWindowMain.jsx'
 import ModalWindowHead from './components/modals/modal-window-head/ModalWindowHead'
 
 

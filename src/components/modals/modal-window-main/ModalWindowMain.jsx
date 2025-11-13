@@ -4,7 +4,7 @@ import { usePairs } from '../../../PairsContext.jsx';
 import './modalWindowMain.css'
 
 
-function ModalWindowMain({modal}) {
+function ModalWindowMain() {
 
     const { modalMainIsOpen, setModalMainIsOpen, dispatchPairs } = usePairs();
 

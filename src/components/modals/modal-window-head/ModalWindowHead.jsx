@@ -88,11 +88,19 @@ function ModalWindowHead({ isOpen, onClose, type }) {
           {items.length === 0 ? (
             <p className="empty">Список пуст</p>
           ) : (
-            <ul>
-              {items.map(item => (
-                <li key={item.id}>{item.number}</li>
-              ))}
-            </ul>
+          <ul>
+            {items.map(item => (
+              <li key={item.id}>
+                <span>{item.number}</span>
+                <button
+                  className="delete-btn"
+                  onClick={() => dispatch({ type: 'DELETE', id: item.id })}
+                >
+                  ×
+                </button>
+              </li>
+            ))}
+          </ul>
           )}
         </div>
       </div>

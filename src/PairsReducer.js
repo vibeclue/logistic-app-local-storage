@@ -26,7 +26,7 @@ export const trucksReducer = (state, action) => {
     case 'ADD':
       return [...state, action.payload];
     case 'DELETE':
-      return state.filter(t => t.id !== action.payload);
+      return state.filter(t => t.id !== action.id);
     default:
       return state;
   }
@@ -37,7 +37,7 @@ export const trailersReducer = (state, action) => {
     case 'ADD':
       return [...state, action.payload];
     case 'DELETE':
-      return state.filter(t => t.id !== action.payload);
+      return state.filter(t => t.id !== action.id);
     default:
       return state;
   }

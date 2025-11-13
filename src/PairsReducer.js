@@ -21,6 +21,8 @@ export function pairsReducer(pairs, action) {
     }
 }
 
+
+
 export const trucksReducer = (state, action) => {
   switch (action.type) {
     case 'ADD':

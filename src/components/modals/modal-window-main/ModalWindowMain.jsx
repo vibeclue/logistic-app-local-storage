@@ -64,8 +64,8 @@ function ModalWindowMain() {
     };
 
     return (
-        <div className={`modal-overlay ${modalMainIsOpen ? 'open' : ''}`}>
-            <div className="modal-main-content">
+        <div className={`modal-overlay ${modalMainIsOpen ? 'open' : ''}`} onClick={() => setModalMainIsOpen(false)}>
+            <div className="modal-main-content" onClick={e => e.stopPropagation()}>
                 <div className="modal-main-header">
                     <h4>Добавить пару</h4>
                 </div>

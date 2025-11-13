@@ -8,11 +8,13 @@ export function pairsReducer(pairs, action) {
                 pair.id === action.id ? { ...pair, flag: !pair.flag } : pair
             );
         }
-
+        case 'edited':
+            return pairs.map(pair =>
+              pair.id === action.editPair.id ? action.editPair : pair
+            );
         case 'added': {
             return [...pairs, action.newPair];
         }
-
         default: {
             return pairs;
         }        

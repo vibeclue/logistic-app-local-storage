@@ -5,7 +5,21 @@ import './pairTable.css'
 
 function PairTable() {
 
-  const { pairs } = usePairs();
+  const { pairs, filterBy } = usePairs();
+
+  const filteredPairs = pairs.filter(pair => {
+    const truckMatch = pair.truck.toLowerCase().includes((filterBy.truck || '').toLowerCase());
+    const trailerMatch = pair.trailer.toLowerCase().includes((filterBy.trailer || '').toLowerCase());
+
+    let dateMatch = true;
+    if (filterBy.date) {
+      const [year, month, day] = filterBy.date.split('-');
+      const formatted = `${day}.${month}.${year}`; 
+      dateMatch = pair.date === formatted;
+    }
+
+    return truckMatch && trailerMatch && dateMatch;
+  });
 
   return (
     <div className="table-container">
@@ -23,8 +37,8 @@ function PairTable() {
           </tr>
         </thead>
         <tbody>
-          {pairs.length > 0 ? (
-            pairs.map((pair, index) => (
+          {filteredPairs.length > 0 ? (
+            filteredPairs.map((pair, index) => (
                 <Pair 
                   pair={pair}
                   index={index}
@@ -34,7 +48,7 @@ function PairTable() {
           ) : (  
               <tr>
                 <td colSpan="8" className="empty-table">
-                   Нет активных пар 😴
+                  Нет активных пар 😴
                 </td>
               </tr>
           )}

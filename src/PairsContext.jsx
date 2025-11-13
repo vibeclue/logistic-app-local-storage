@@ -60,6 +60,8 @@ export function PairsProvider({ children }) {
 
   const [modalMainIsOpen, setModalMainIsOpen] = useState(false);
 
+  const [filterBy, setFilterBy] = useState('');
+
   return (
     <PairsContext.Provider value={ 
       {
@@ -67,6 +69,8 @@ export function PairsProvider({ children }) {
         dispatchPairs,  
         modalMainIsOpen,
         setModalMainIsOpen,
+        filterBy,
+        setFilterBy
         }
     }>
         <TrucksContext.Provider value={{ trucks, dispatchTrucks }}>

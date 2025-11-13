@@ -13,6 +13,10 @@ function ModalWindowHead({ isOpen, onClose, type }) {
   const dispatch = type === 'truck' ? dispatchTrucks : dispatchTrailers;
   const title = type === 'truck' ? 'Тягачи' : 'Прицепы';
 
+  const [visible, setVisible] = useState(isOpen);
+
+
+
   const startAdding = () => setIsAdding(true);
   const cancelAdding = () => {
     setNewValue('');
@@ -30,17 +34,19 @@ function ModalWindowHead({ isOpen, onClose, type }) {
     }
   };
 
-    useEffect(() => {
-    if (isOpen) {
-      setIsAdding(false);
-      setNewValue('');
+  useEffect(() => {
+    if (isOpen) setVisible(true);
+    else {
+      // ждём окончание анимации, потом убираем
+      const timer = setTimeout(() => setVisible(false), 250);
+      return () => clearTimeout(timer);
     }
-    }, [isOpen]);
+  }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!visible) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className={`modal-overlay ${isOpen ? 'open' : ''}`} onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
 
         {/* ЗАГОЛОВОК */}

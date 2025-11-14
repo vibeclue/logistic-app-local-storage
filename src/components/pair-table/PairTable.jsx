@@ -7,19 +7,24 @@ function PairTable() {
 
   const { pairs, filterBy } = usePairs();
 
-  const filteredPairs = pairs.filter(pair => {
-    const truckMatch = pair.truck.toLowerCase().includes((filterBy.truck || '').toLowerCase());
-    const trailerMatch = pair.trailer.toLowerCase().includes((filterBy.trailer || '').toLowerCase());
+const filteredPairs = pairs.filter(pair => {
+  const truckMatch = pair.truck.toLowerCase()
+    .includes((filterBy.truck || '').toLowerCase());
 
-    let dateMatch = true;
-    if (filterBy.date) {
-      const [year, month, day] = filterBy.date.split('-');
-      const formatted = `${day}.${month}.${year}`; 
-      dateMatch = pair.date === formatted;
-    }
+  const trailerMatch = pair.trailer.toLowerCase()
+    .includes((filterBy.trailer || '').toLowerCase());
 
-    return truckMatch && trailerMatch && dateMatch;
-  });
+  let dateMatch = true;
+
+  if (filterBy.date) {
+    const filterDate = normalizeDate(filterBy.date);
+    const pairDate = normalizeDate(pair.date);
+
+    dateMatch = filterDate === pairDate;
+  }
+
+  return truckMatch && trailerMatch && dateMatch;
+});
 
   return (
     <div className="table-container">
@@ -56,6 +61,31 @@ function PairTable() {
       </table>
     </div>
   );
+}
+
+function normalizeDate(dateStr) {
+  if (!dateStr) return null;
+
+  // Если это объект с display/iso
+  if (typeof dateStr === 'object') {
+    if (dateStr.iso) return normalizeDate(dateStr.iso);
+    if (dateStr.display) return normalizeDate(dateStr.display);
+    return null;
+  }
+
+  // Если строка input: yyyy-mm-dd
+  if (dateStr.includes('-')) {
+    const [y, m, d] = dateStr.split('-');
+    return `${d.padStart(2, '0')}.${m.padStart(2, '0')}.${y}`;
+  }
+
+  // Если строка таблицы: dd.mm.yyyy
+  if (dateStr.includes('.')) {
+    const [d, m, y] = dateStr.split('.');
+    return `${d.padStart(2, '0')}.${m.padStart(2, '0')}.${y}`;
+  }
+
+  return null;
 }
 
 export default PairTable;

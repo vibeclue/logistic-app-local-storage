@@ -71,6 +71,10 @@ input[type="date"]{
   z-index: 1;
 }
 
+.date-input-wrapper:has(.clear-date) input[type="date"] {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
 .clear-date:hover svg path {
   stroke: #666;
 }

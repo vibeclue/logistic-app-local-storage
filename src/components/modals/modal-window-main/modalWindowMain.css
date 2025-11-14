@@ -69,6 +69,38 @@
     padding: 10px;
 }
 
+
+
+
+
+
+
+#date-group {
+    position: relative;   /* превращаем группу в wrapper */
+}
+
+#date-group input[type="date"] {
+    width: 100%;
+    padding-right: 30px;  /* место для иконки */
+    box-sizing: border-box;
+}
+
+#date-group .calendar-icon {
+    position: absolute;
+    right: 10px;          
+    top: 39px;            /* сдвинь выше/ниже под свой UI */
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    pointer-events: none; /* чтобы клики шли в input */
+    /* opacity: 0.7; */
+}
+
+
+
+
+
+
 .form-group select {
   width: 100%;
   height: 30px;
@@ -129,6 +161,7 @@
 .required {
   color: red;
 }
+
 
 
 

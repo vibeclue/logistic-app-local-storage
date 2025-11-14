@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTrucks, useTrailers } from '../../../PairsContext.jsx';
 import { usePairs } from '../../../PairsContext.jsx';
+import calendar from '../../../img/mdi_calendar.png'
 import './modalWindowMain.css'
 
 
@@ -115,6 +116,7 @@ function ModalWindowMain() {
                                     value={formData.date ? convertDate(formData.date).iso : convertDate().iso} 
                                     onChange={handleChange} 
                             />
+                            <img src={calendar} alt="календарь" className="calendar-icon"/>
                         </div>
 
                         <div className="form-group">

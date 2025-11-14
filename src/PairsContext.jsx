@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer, useState, useEffect } from "react";
 import { pairsReducer, trucksReducer, trailersReducer } from './PairsReducer';
 
 
@@ -7,50 +7,11 @@ export const TrucksContext = createContext();
 export const TrailersContext = createContext();
 
 
-const initialPairs = [
-  {id: 0,
-    truck: "КАМАЗ 5490",
-    trailer: "Тонар 9523",
-    date: "05.11.2025",
-    from: "Москва",
-    to: "Санкт-Петербург",
-    cargo: "Контейнер 20ft",
-    comment: "Срочная доставка, без простоев111",
-    flag: false,
-  },
-  {
-    id: 1,
-    truck: "Volvo FH500",
-    trailer: "Schmitz Cargobull",
-    date: "04.11.2025",
-    from: "Казань",
-    to: "Екатеринбург",
-    cargo: "Паллеты",
-    comment: "-",
-    flag: false,
-  },
-  {
-    id: 2,
-    truck: "MAN TGX",
-    trailer: "Krone SD",
-    date: "03.11.2025",
-    from: "Новосибирск",
-    to: "Омск",
-    cargo: "Сыпучие грузы",
-    comment: "Требуется тент",
-    flag: true,
-  },
-];
+const initialPairs = localStorage.getItem('pairs') ? JSON.parse(localStorage.getItem('pairs')) : [];
 
-const initialTrucks = [
-  { id: 1, number: "А123БВ77"},
-  { id: 2, number: "Е456КХ99"},
-];
+const initialTrucks = localStorage.getItem('trucks') ? JSON.parse(localStorage.getItem('trucks')) : [];
 
-const initialTrailers = [
-  { id: 1, number: "ТН1234"},
-  { id: 2, number: "ШМ5678"},
-];
+const initialTrailers = localStorage.getItem('trailers') ? JSON.parse(localStorage.getItem('trailers')) : [];
 
 export function PairsProvider({ children }) {
 
@@ -61,6 +22,18 @@ export function PairsProvider({ children }) {
   const [modalMainIsOpen, setModalMainIsOpen] = useState(false);
 
   const [filterBy, setFilterBy] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('pairs', JSON.stringify(pairs));
+  }, [pairs]); // каждый раз когда меняется состояние pairs происходит рирендер того, что находится в useEffect
+
+  useEffect(() => {
+    localStorage.setItem('trucks', JSON.stringify(trucks));
+  }, [trucks]);
+
+  useEffect(() => {
+    localStorage.setItem('trailers', JSON.stringify(trailers));
+  }, [trailers]);
 
   return (
     <PairsContext.Provider value={ 

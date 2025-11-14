@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { usePairs } from '../../PairsContext.jsx';
+import { useState } from 'react';
+import { usePairs, useTrucks, useTrailers } from '../../PairsContext.jsx';
 import editImg from '../../img/edit.png'
 import deleteImg from '../../img/delete.png'
 import flagOff from '../../img/tabler_flag.png'
@@ -8,6 +8,9 @@ import './pair.css'
 
 
 function Pair({ pair, index }){
+
+    const { trucks } = useTrucks();
+    const { trailers } = useTrailers();
 
     const { dispatchPairs } = usePairs();
     const [isEditing, setIsEditing] = useState(false);
@@ -42,8 +45,34 @@ function Pair({ pair, index }){
         <tr className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
         {isEditing ? (
             <>
-            <td><input className='editing-row' name="truck" value={editedPair.truck} onChange={handleChange} /></td>
-            <td><input className='editing-row' name="trailer" value={editedPair.trailer} onChange={handleChange} /></td>
+            <td>
+                <select
+                    name="truck" 
+                    value={editedPair.truck}
+                    onChange={handleChange}
+                    className="custom-select editing-row">
+                    <option value="">Тягач</option>  
+                    {trucks.map(t => (
+                        <option key={t.id} value={t.number}>
+                            {t.number}
+                        </option>
+                    ))}
+                </select>    
+            </td>
+            <td>
+                <select
+                    name="trailer" 
+                    value={editedPair.trailer}
+                    onChange={handleChange}
+                    className="custom-select editing-row">
+                    <option value="">Прицеп</option>  
+                    {trailers.map(t => (
+                        <option key={t.id} value={t.number}>
+                            {t.number}
+                        </option>
+                    ))}
+                </select> 
+            </td>
             <td><input className='editing-row' type="date" name="date" value={editedPair.date} onChange={handleChange} /></td>
             <td><input className='editing-row' name="from" value={editedPair.from} onChange={handleChange} /></td>
             <td><input className='editing-row' name="to" value={editedPair.to} onChange={handleChange} /></td>
